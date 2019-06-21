@@ -13,6 +13,7 @@ Projeto de monitoramento baseado em containers.
 Clonar o projeto:
 
 - git clone https://github.com/fernandesgustavo/monitoring-containers.git
+- Renomear o arquivo example.env para .env
 
 # Instalação do Docker
 
