@@ -1,0 +1,30 @@
+version: "3"
+
+networks:
+  frontend:
+    driver: ${NETWORKS_DRIVER}
+  backend:
+    driver: ${NETWORKS_DRIVER}
+
+services:
+
+### Grafana ################################################
+  
+  grafana:
+    build:
+      context: ./grafana
+      args:
+        - GRAFANA_VERSION=${GRAFANA_VERSION}
+    container_name: ${GRAFANA_CONTAINER_NAME}-${GRAFANA_VERSION}
+    restart: on-failure
+    volumes: 
+      - ${GF_PATHS_DATA}:/var/lib/grafana
+      - ${GF_PATHS_LOGS}:/var/log/grafana
+    ports:
+      - ${GRAFANA_PORT}:3000
+    networks:
+      - backend
+      - frontend
+    environment:
+      - GF_INSTALL_PLUGINS=${GF_INSTALL_PLUGINS}
+      - GF_LOG_MODE=${GF_LOG_MODE}

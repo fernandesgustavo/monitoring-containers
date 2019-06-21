@@ -33,7 +33,9 @@ Configure os valores para os serviços de acordo com o seu ambiente:
 - Para qualquer alteração anterior, se faz necessário adicionar a variável de ambiente na seção grafana > environment, do arquivo docker-compose.yml
 - Caso já possua um banco de dados, em sqlite por exemplo, copie o arquivo grafana.db para /var/lib/grafana no host, o mesmo será mapeado para /var/lib/grafana no container
 - Por default os Logs serão salvos em /var/log/grafana no host, pois o mesmo será mapeado em /var/log/grafana no container
-- Por default o Grafana será executado na porta 3000 do host e do container
+- Por default o Grafana será executado na porta 3000 do host, caso queira customizar, atualize a variável GRAFANA_PORT
+- Por default o container terá o nome "empresa-grafana-latest", caso queira customizar, atualize a variável GRAFANA_CONTAINER
+- Por default o container terá a última versão do Grafana disponível, caso queira customizar, utilize a variável GRAFANA_VERSION
     
 # Arquivo docker-composer.yml
 
