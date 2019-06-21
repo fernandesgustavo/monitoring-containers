@@ -8,12 +8,15 @@ Projeto de monitoramento baseado em containers.
 - Zabbix web (futuro)
 - Grafana (em andamento)
 
-# Primeiro passo
+# Primeiros passos
 
 Clonar o projeto:
 
 - git clone https://github.com/fernandesgustavo/monitoring-containers.git
-- Renomear o arquivo example.env para .env
+
+Criar o arquivo .env:
+
+- Copiar ou renomear o arquivo "example.env" para ".env"
 
 # Instalação do Docker
 
