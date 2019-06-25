@@ -1,4 +1,4 @@
-version: "3"
+version: "3.3"
 
 networks:
   frontend:
@@ -7,6 +7,28 @@ networks:
     driver: ${NETWORKS_DRIVER}
 
 services:
+
+### Zabbix Web #############################################
+
+  zabbix-web:
+    build:
+      context: ./zabbix-web
+      args:
+        - ZABBIX_WEB_VERSION=${ZABBIX_WEB_VERSION}
+    container_name: ${ZABBIX_WEB_CONTAINER_NAME}-${ZABBIX_WEB_VERSION}
+    restart: on-failure
+    ports: 
+      - ${ZABBIX_WEB_PORT}:80
+    networks:
+      - backend
+      - frontend
+    environment: 
+      - DB_SERVER_HOST=${ZABBIX_WEB_DB_SERVER_HOST}
+      - MYSQL_DATABASE=${ZABBIX_WEB_MYSQL_DATABASE}
+      - MYSQL_USER=${ZABBIX_WEB_MYSQL_USER}
+      - MYSQL_PASSWORD=${ZABBIX_WEB_MYSQL_PASSWORD}
+      - ZBX_SERVER_HOST=${ZABBIX_WEB_ZBX_SERVER_HOST}
+      - PHP_TZ=${ZABBIX_WEB_PHP_TZ}
 
 ### Grafana ################################################
   
